@@ -1,0 +1,56 @@
+Function getSp(FirstN, MiddleN, LastN, EpicN)
+
+ If EpicN = "" Then
+    FullN = UCase(LastN) & ", " & UCase(FirstN)
+    If MiddleN <> "" Then FullN = FullN & " " & UCase(MiddleN)
+ Else
+    FullN = EpicN
+ End If
+ 
+ FoundAt = 0
+   
+   Do
+     FoundAt = FoundAt + 1
+   Loop While (FoundAt < 65000 And FullN <> Worksheets("Epic").Range("B" & FoundAt))
+ 
+ If FoundAt < 64999 Then
+   Tmp = Worksheets("Epic").Range("E" & FoundAt)
+   If Worksheets("Epic").Range("H" & FoundAt) <> "" Then Tmp = Tmp & " | " & Worksheets("Epic").Range("H" & FoundAt)
+   
+ Else
+    Tmp = "Not found"
+ End If
+ 
+ If Tmp = 0 Then Tmp = ""
+ getSp = Tmp
+
+End Function
+
+
+
+Function getSp2(FirstN, MiddleN, LastN)
+
+ FullN = UCase(LastN) & ", " & UCase(FirstN)
+ If MiddleN <> "" Then FullN = FullN & " " & UCase(MiddleN)
+ FoundAt = 0
+   
+   Do
+     FoundAt = FoundAt + 1
+   Loop While (FoundAt < 65000 And FullN <> Worksheets("Epic").Range("B" & FoundAt))
+ 
+ If FoundAt < 64999 Then
+ If Worksheets("Epic").Range("H" & FoundAt) <> "" Then
+    Tmp = Worksheets("Epic").Range("H" & FoundAt)
+ Else
+    Tmp = Worksheets("Epic").Range("E" & FoundAt)
+ End If
+ 
+ Else
+    Tmp = "Not found"
+ End If
+ 
+ If Tmp = 0 Then Tmp = ""
+ getSp = Tmp
+
+End Function
+
